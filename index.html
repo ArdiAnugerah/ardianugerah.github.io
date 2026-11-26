@@ -52,7 +52,10 @@ section>.wrap>h2{display:inline-block;font-size:clamp(30px,4.5vw,46px);font-weig
 .svc h3{font-size:22px;margin-bottom:8px}.svc p{margin:0;font-size:15.5px;font-weight:500}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px}
 .tile{border:3px solid var(--bd);box-shadow:6px 6px 0 var(--sh);aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;background:var(--panel);color:var(--ink)}
-.tile b{font-size:17px}.tile span{font-size:14px;color:var(--mute)}
+.tile b{font-size:19px}
+a.tile{text-decoration:none;color:#000;background:var(--p);transition:transform .08s,box-shadow .08s}
+a.tile:nth-child(6n+2){background:var(--g)}a.tile:nth-child(6n+3){background:var(--l)}a.tile:nth-child(6n+4){background:var(--o)}a.tile:nth-child(6n+5){background:#fff}a.tile:nth-child(6n+6){background:var(--b)}
+a.tile:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--sh)}.tile span{font-size:14px;color:#2b2b33;font-weight:600}
 .row{display:grid;grid-template-columns:1fr;gap:10px;padding:22px 0;border-bottom:3px solid var(--bd)}
 @media(min-width:700px){.row{grid-template-columns:200px 1fr;gap:28px}}
 .row small{justify-self:start;align-self:start;background:var(--y);color:#000;border:3px solid #000;padding:2px 12px;font-size:15px;font-weight:700}
@@ -114,12 +117,12 @@ footer{padding:28px 0 40px;font-size:14px;font-weight:600;border-top:3px solid v
 <section id="work"><div class="wrap">
 <h2>Selected work</h2>
 <div class="grid">
-<div class="tile"><b>Ghost mannequin: T-shirt</b><span>Before and after goes here</span></div>
-<div class="tile"><b>Background removal: Sneakers</b><span>Before and after goes here</span></div>
-<div class="tile"><b>Color matching: Bag collection</b><span>Before and after goes here</span></div>
-<div class="tile"><b>Dust removal: Watch</b><span>Before and after goes here</span></div>
-<div class="tile"><b>Liquify: Dress</b><span>Before and after goes here</span></div>
-<div class="tile"><b>Retouching: Model portrait</b><span>Before and after goes here</span></div>
+<a class="tile" href="fashion.html"><b>Fashion and ghost mannequin</b><span>View photos</span></a>
+<a class="tile" href="bags.html"><b>Bags</b><span>View photos</span></a>
+<a class="tile" href="watches.html"><b>Watches</b><span>View photos</span></a>
+<a class="tile" href="eyeglasses.html"><b>Eyeglasses</b><span>View photos</span></a>
+<a class="tile" href="jewelry.html"><b>Jewelry</b><span>View photos</span></a>
+<a class="tile" href="aplus.html"><b>Amazon A+ content</b><span>View photos</span></a>
 </div>
 <div class="btns" style="margin-top:34px"><a class="btn p" href="work.html">See all work</a></div></div></section>
 
