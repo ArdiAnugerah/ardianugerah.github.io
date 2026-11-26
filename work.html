@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Work | Ardi, Product Photo Editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffd93d;--dot:rgba(0,0,0,.2);--panel:#fff;--ink:#000;--mute:#2b2b33;--bd:#000;--sh:#000;--y:#fff;--p:#ff7ab8;--g:#37e8a6;--b:#5b7cff;--o:#ff9a3d;--l:#cdb8ff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+
+
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(var(--dot) 1.5px,transparent 1.6px) 0 0/22px 22px,var(--bg);color:var(--ink);font:500 17px/1.6 "Instrument Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Instrument Sans",sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:4px solid var(--b);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;gap:16px}
+nav b{font:800 22px "Bricolage Grotesque",sans-serif;background:var(--y);color:#000;border:3px solid var(--bd);box-shadow:4px 4px 0 var(--sh);padding:4px 14px}
+nav div{display:flex;gap:6px;font-size:15px;font-weight:600;flex-wrap:wrap;justify-content:flex-end}
+nav div a{text-decoration:none;padding:4px 10px;border:3px solid transparent}
+nav div a:hover{border-color:var(--bd);background:var(--p);color:#000}
+.hero{display:grid;grid-template-columns:1fr;gap:36px;padding:28px 0 72px}
+@media(min-width:860px){.hero{grid-template-columns:1fr 1.15fr;align-items:center;gap:52px}}
+.hero h1{font-size:clamp(44px,7vw,84px);font-weight:800;letter-spacing:-.03em}
+.hero p{max-width:46ch;margin:20px 0 28px;font-weight:500}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 24px;font-weight:700;text-decoration:none;border:3px solid var(--bd);background:#fff;color:#000;box-shadow:5px 5px 0 var(--sh);transition:transform .08s,box-shadow .08s}
+.btn.p{background:#000;color:#fff}
+.btn:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--sh)}
+.btn:active{transform:translate(5px,5px);box-shadow:0 0 0 var(--sh)}
+.ba{--p:50;position:relative;aspect-ratio:4/3;overflow:hidden;border:3px solid var(--bd);box-shadow:9px 9px 0 var(--sh);user-select:none;touch-action:pan-y;background:#fff}
+.layer{position:absolute;inset:0}
+.layer svg{width:100%;height:100%;display:block}
+.before{background:radial-gradient(ellipse at 50% 100%,#9a9ea4 0,#c9ccd0 60%),#c9ccd0}
+.after{background:conic-gradient(#fff 25%,#d9dde2 0 50%,#fff 0 75%,#d9dde2 0) 0 0/24px 24px;clip-path:inset(0 calc(100% - var(--p)*1%) 0 0)}
+.chip{position:absolute;top:12px;padding:3px 12px;background:var(--y);color:#000;border:3px solid #000;font-size:14px;font-weight:700}
+.chip.l{left:12px}.chip.r{right:12px;background:var(--p)}
+.bar{position:absolute;top:0;bottom:0;left:calc(var(--p)*1%);width:5px;margin-left:-2.5px;background:#000;pointer-events:none}
+.bar::after{content:"";position:absolute;top:50%;left:50%;width:36px;height:36px;margin:-18px;background:var(--y);border:3px solid #000;box-shadow:3px 3px 0 #000}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba:focus-within{outline:4px solid var(--b);outline-offset:3px}
+section{padding:60px 0}
+section>.wrap>h2{display:inline-block;font-size:clamp(30px,4.5vw,46px);font-weight:800;margin-bottom:34px;padding:6px 18px;border:3px solid var(--bd);box-shadow:6px 6px 0 var(--sh);color:#000;background:var(--y)}
+#work>.wrap>h2{background:var(--p)}#about>.wrap>h2{background:var(--g)}#contact>.wrap>h2{background:var(--b)}
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
+.svc div{border:3px solid var(--bd);box-shadow:6px 6px 0 var(--sh);padding:22px;color:#000;background:var(--y)}
+.svc div:nth-child(6n+2){background:var(--p)}.svc div:nth-child(6n+3){background:var(--g)}.svc div:nth-child(6n+4){background:var(--l)}.svc div:nth-child(6n+5){background:var(--o)}.svc div:nth-child(6n+6){background:#fff}
+.svc h3{font-size:22px;margin-bottom:8px}.svc p{margin:0;font-size:15.5px;font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px}
+.tile{border:3px solid var(--bd);box-shadow:6px 6px 0 var(--sh);aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;background:var(--panel);color:var(--ink)}
+.tile b{font-size:17px}.tile span{font-size:14px;color:var(--mute)}
+.row{display:grid;grid-template-columns:1fr;gap:10px;padding:22px 0;border-bottom:3px solid var(--bd)}
+@media(min-width:700px){.row{grid-template-columns:200px 1fr;gap:28px}}
+.row small{justify-self:start;align-self:start;background:var(--y);color:#000;border:3px solid #000;padding:2px 12px;font-size:15px;font-weight:700}
+.row:nth-child(2) small{background:var(--p)}.row:nth-child(3) small{background:var(--g)}.row:nth-child(4) small{background:var(--l)}
+.row h3{font-size:22px;margin-bottom:6px}.row p{margin:0;color:var(--mute)}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tags span{border:3px solid var(--bd);background:var(--panel);box-shadow:3px 3px 0 var(--sh);padding:4px 14px;font-size:15px;font-weight:600}
+.contact{display:inline-block;font-size:clamp(26px,5vw,52px);font-family:"Bricolage Grotesque",sans-serif;font-weight:800;letter-spacing:-.02em;text-decoration:underline;text-decoration-thickness:5px;text-underline-offset:6px;word-break:break-all}
+.contact:hover{background:var(--y);color:#000}
+.links{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+.links a{text-decoration:none;font-weight:700;padding:8px 18px;border:3px solid var(--bd);background:#fff;color:#000;box-shadow:4px 4px 0 var(--sh)}
+.links a:hover{background:var(--g)}
+footer{padding:28px 0 40px;font-size:14px;font-weight:600;border-top:3px solid var(--bd)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+@media(max-width:520px){.ba{box-shadow:6px 6px 0 var(--sh)}}
+
+.top{padding:26px 0 8px}.top h1{font-size:clamp(40px,6vw,72px);font-weight:800;letter-spacing:-.03em}
+.top p{max-width:52ch;margin:14px 0 0}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+figure{margin:0;border:3px solid var(--bd);box-shadow:6px 6px 0 var(--sh);background:#fff;color:#000}
+figure img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;cursor:zoom-in;background:#eee}
+figcaption{padding:10px 14px;font-weight:700;border-top:3px solid var(--bd)}
+figure.empty img{visibility:hidden}figure.empty{background:repeating-linear-gradient(45deg,#fff 0 12px,#f1f1f1 12px 24px)}
+dialog{border:3px solid #000;box-shadow:8px 8px 0 #000;padding:0;max-width:min(96vw,1100px);background:#fff}
+dialog::backdrop{background:rgba(0,0,0,.7)}
+dialog img{display:block;max-width:100%;max-height:86vh;margin:0 auto}
+dialog button{display:block;width:100%;border:0;border-top:3px solid #000;background:#ffd93d;font:700 16px "Instrument Sans",sans-serif;padding:10px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><b>Ardi</b><div><a href="index.html">Back to home</a><a href="index.html#contact">Contact</a></div></nav>
+<header class="top"><h1>All work</h1><p>Before and after photos from my product editing projects. Click a photo to enlarge it.</p></header>
+</div>
+
+<section><div class="wrap"><h2>Watches</h2>
+<div class="gal">
+<!-- To add a photo: copy one <figure> line, change the file name and caption -->
+<figure><img src="images/watch-1.jpg" alt="Watch: dust removal and color matching" loading="lazy"><figcaption>Watch: dust removal and color matching</figcaption></figure>
+</div></div></section>
+
+<section><div class="wrap"><h2>Bags</h2>
+<div class="gal">
+<!-- To add a photo: copy one <figure> line, change the file name and caption -->
+<figure><img src="images/bag-1.jpg" alt="Bag: background removal and color matching" loading="lazy"><figcaption>Bag: background removal and color matching</figcaption></figure>
+</div></div></section>
+
+<section><div class="wrap"><h2>Eyeglasses</h2>
+<div class="gal">
+<!-- To add a photo: copy one <figure> line, change the file name and caption -->
+<figure><img src="images/glasses-1.jpg" alt="Eyeglasses: reflection and dust cleanup" loading="lazy"><figcaption>Eyeglasses: reflection and dust cleanup</figcaption></figure>
+</div></div></section>
+
+<section><div class="wrap"><h2>Fashion and ghost mannequin</h2>
+<div class="gal">
+<!-- To add a photo: copy one <figure> line, change the file name and caption -->
+<figure><img src="images/fashion-1.jpg" alt="Ghost mannequin: neck joint editing" loading="lazy"><figcaption>Ghost mannequin: neck joint editing</figcaption></figure>
+</div></div></section>
+
+<section><div class="wrap"><h2>Jewelry</h2>
+<div class="gal">
+<!-- To add a photo: copy one <figure> line, change the file name and caption -->
+<figure><img src="images/jewelry-1.jpg" alt="Jewelry: scratch removal and retouching" loading="lazy"><figcaption>Jewelry: scratch removal and retouching</figcaption></figure>
+</div></div></section>
+
+<section><div class="wrap"><h2>Amazon A+ content</h2>
+<div class="gal">
+<!-- To add a photo: copy one <figure> line, change the file name and caption -->
+<figure><img src="images/aplus-furniture.jpg" alt="A+ content: furniture" loading="lazy"><figcaption>A+ content: furniture</figcaption></figure>
+<figure><img src="images/aplus-kids.jpg" alt="A+ content: kids product" loading="lazy"><figcaption>A+ content: kids product</figcaption></figure>
+</div></div></section>
+
+<div class="wrap"><footer><div>&copy; 2026 Ardi</div></footer></div>
+<dialog id="dlg"><img id="big" alt=""><button type="button" id="cls">Close</button></dialog>
+<script>
+(function(){var d=document.getElementById('dlg'),b=document.getElementById('big');
+document.querySelectorAll('figure img').forEach(function(i){
+i.addEventListener('error',function(){i.closest('figure').classList.add('empty')});
+i.addEventListener('click',function(){b.src=i.src;b.alt=i.alt;d.showModal()});});
+document.getElementById('cls').addEventListener('click',function(){d.close()});
+d.addEventListener('click',function(e){if(e.target===d)d.close()});})();
+</script>
+</body>
+</html>

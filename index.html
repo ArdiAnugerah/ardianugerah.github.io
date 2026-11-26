@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ardi, Product Photo Editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffd93d;--dot:rgba(0,0,0,.2);--panel:#fff;--ink:#000;--mute:#2b2b33;--bd:#000;--sh:#000;--y:#fff;--p:#ff7ab8;--g:#37e8a6;--b:#5b7cff;--o:#ff9a3d;--l:#cdb8ff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+
+
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(var(--dot) 1.5px,transparent 1.6px) 0 0/22px 22px,var(--bg);color:var(--ink);font:500 17px/1.6 "Instrument Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Instrument Sans",sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:4px solid var(--b);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;gap:16px}
+nav b{font:800 22px "Bricolage Grotesque",sans-serif;background:var(--y);color:#000;border:3px solid var(--bd);box-shadow:4px 4px 0 var(--sh);padding:4px 14px}
+nav div{display:flex;gap:6px;font-size:15px;font-weight:600;flex-wrap:wrap;justify-content:flex-end}
+nav div a{text-decoration:none;padding:4px 10px;border:3px solid transparent}
+nav div a:hover{border-color:var(--bd);background:var(--p);color:#000}
+.hero{display:grid;grid-template-columns:1fr;gap:36px;padding:28px 0 72px}
+@media(min-width:860px){.hero{grid-template-columns:1fr 1.15fr;align-items:center;gap:52px}}
+.hero h1{font-size:clamp(44px,7vw,84px);font-weight:800;letter-spacing:-.03em}
+.hero p{max-width:46ch;margin:20px 0 28px;font-weight:500}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 24px;font-weight:700;text-decoration:none;border:3px solid var(--bd);background:#fff;color:#000;box-shadow:5px 5px 0 var(--sh);transition:transform .08s,box-shadow .08s}
+.btn.p{background:#000;color:#fff}
+.btn:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--sh)}
+.btn:active{transform:translate(5px,5px);box-shadow:0 0 0 var(--sh)}
+.ba{--p:50;position:relative;aspect-ratio:4/3;overflow:hidden;border:3px solid var(--bd);box-shadow:9px 9px 0 var(--sh);user-select:none;touch-action:pan-y;background:#fff}
+.layer{position:absolute;inset:0}
+.layer svg{width:100%;height:100%;display:block}
+.before{background:radial-gradient(ellipse at 50% 100%,#9a9ea4 0,#c9ccd0 60%),#c9ccd0}
+.after{background:conic-gradient(#fff 25%,#d9dde2 0 50%,#fff 0 75%,#d9dde2 0) 0 0/24px 24px;clip-path:inset(0 calc(100% - var(--p)*1%) 0 0)}
+.chip{position:absolute;top:12px;padding:3px 12px;background:var(--y);color:#000;border:3px solid #000;font-size:14px;font-weight:700}
+.chip.l{left:12px}.chip.r{right:12px;background:var(--p)}
+.bar{position:absolute;top:0;bottom:0;left:calc(var(--p)*1%);width:5px;margin-left:-2.5px;background:#000;pointer-events:none}
+.bar::after{content:"";position:absolute;top:50%;left:50%;width:36px;height:36px;margin:-18px;background:var(--y);border:3px solid #000;box-shadow:3px 3px 0 #000}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba:focus-within{outline:4px solid var(--b);outline-offset:3px}
+section{padding:60px 0}
+section>.wrap>h2{display:inline-block;font-size:clamp(30px,4.5vw,46px);font-weight:800;margin-bottom:34px;padding:6px 18px;border:3px solid var(--bd);box-shadow:6px 6px 0 var(--sh);color:#000;background:var(--y)}
+#work>.wrap>h2{background:var(--p)}#about>.wrap>h2{background:var(--g)}#contact>.wrap>h2{background:var(--b)}
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
+.svc div{border:3px solid var(--bd);box-shadow:6px 6px 0 var(--sh);padding:22px;color:#000;background:var(--y)}
+.svc div:nth-child(6n+2){background:var(--p)}.svc div:nth-child(6n+3){background:var(--g)}.svc div:nth-child(6n+4){background:var(--l)}.svc div:nth-child(6n+5){background:var(--o)}.svc div:nth-child(6n+6){background:#fff}
+.svc h3{font-size:22px;margin-bottom:8px}.svc p{margin:0;font-size:15.5px;font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px}
+.tile{border:3px solid var(--bd);box-shadow:6px 6px 0 var(--sh);aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;background:var(--panel);color:var(--ink)}
+.tile b{font-size:17px}.tile span{font-size:14px;color:var(--mute)}
+.row{display:grid;grid-template-columns:1fr;gap:10px;padding:22px 0;border-bottom:3px solid var(--bd)}
+@media(min-width:700px){.row{grid-template-columns:200px 1fr;gap:28px}}
+.row small{justify-self:start;align-self:start;background:var(--y);color:#000;border:3px solid #000;padding:2px 12px;font-size:15px;font-weight:700}
+.row:nth-child(2) small{background:var(--p)}.row:nth-child(3) small{background:var(--g)}.row:nth-child(4) small{background:var(--l)}
+.row h3{font-size:22px;margin-bottom:6px}.row p{margin:0;color:var(--mute)}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tags span{border:3px solid var(--bd);background:var(--panel);box-shadow:3px 3px 0 var(--sh);padding:4px 14px;font-size:15px;font-weight:600}
+.contact{display:inline-block;font-size:clamp(26px,5vw,52px);font-family:"Bricolage Grotesque",sans-serif;font-weight:800;letter-spacing:-.02em;text-decoration:underline;text-decoration-thickness:5px;text-underline-offset:6px;word-break:break-all}
+.contact:hover{background:var(--y);color:#000}
+.links{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+.links a{text-decoration:none;font-weight:700;padding:8px 18px;border:3px solid var(--bd);background:#fff;color:#000;box-shadow:4px 4px 0 var(--sh)}
+.links a:hover{background:var(--g)}
+footer{padding:28px 0 40px;font-size:14px;font-weight:600;border-top:3px solid var(--bd)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+@media(max-width:520px){.ba{box-shadow:6px 6px 0 var(--sh)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><b>Ardi</b><div><a href="#services">Services</a><a href="work.html">Work</a><a href="#about">Experience</a><a href="#contact">Contact</a></div></nav>
+
+<header class="hero">
+<div>
+<h1>Clean product photos, ready to sell.</h1>
+<p>I’m Ardi, a freelance photo editor with 8 years of experience. Background removal, ghost mannequin, retouching and color matching for online stores and brands.</p>
+<div class="btns"><a class="btn p" href="#contact">Hire me</a><a class="btn" href="work.html">See my work</a></div>
+</div>
+<div>
+<div class="ba" id="ba" role="group" aria-label="Before and after comparison">
+<div class="layer before"><svg viewBox="0 0 400 300" aria-hidden="true">
+<ellipse cx="200" cy="262" rx="120" ry="12" fill="#000" opacity=".22"/>
+<path d="M150 60 L110 75 L70 120 L100 145 L120 125 L120 250 L280 250 L280 125 L300 145 L330 120 L290 75 L250 60 Q200 95 150 60Z" fill="#3b6ea8"/>
+<path d="M158 56 Q200 90 242 56 L242 34 L158 34Z" fill="#7d838c"/>
+<path d="M128 150 L158 168 L140 190Z" fill="#2f5d92" opacity=".55"/>
+<circle cx="90" cy="60" r="2.5" fill="#555"/><circle cx="310" cy="210" r="3" fill="#555"/><circle cx="60" cy="230" r="2" fill="#555"/><circle cx="240" cy="120" r="1.8" fill="#9bb7d6"/><circle cx="165" cy="205" r="2.2" fill="#9bb7d6"/>
+<path d="M310 40 l50 14" stroke="#666" stroke-width="1.5" opacity=".6"/></svg></div>
+<div class="layer after"><svg viewBox="0 0 400 300" aria-hidden="true">
+<path d="M150 60 L110 75 L70 120 L100 145 L120 125 L120 250 L280 250 L280 125 L300 145 L330 120 L290 75 L250 60 Q200 95 150 60Z" fill="#3b6ea8"/>
+<path d="M158 56 Q200 90 242 56 L250 60 Q200 95 150 60Z" fill="#2f5d92"/>
+<path d="M158 56 Q200 90 242 56 Q200 50 158 56Z" fill="#2a5686"/></svg></div>
+<span class="chip l">After</span><span class="chip r">Before</span>
+<div class="bar"></div>
+<input type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after" id="rng">
+</div>
+</div>
+</header>
+
+<section id="services"><div class="wrap">
+<h2>What I do</h2>
+<div class="svc">
+<div><h3>Background removal</h3><p>Clean cutouts with natural edges, on white, transparent or any color you need.</p></div>
+<div><h3>Ghost mannequin</h3><p>Neck joint editing that makes clothing look worn, without the mannequin.</p></div>
+<div><h3>Liquify and texture</h3><p>Shape fixes that keep fabric texture and details intact.</p></div>
+<div><h3>Color matching</h3><p>Product color that matches the real item, consistent across a whole catalog.</p></div>
+<div><h3>Dust and scratch removal</h3><p>Spotless surfaces for jewelry, electronics and glossy products.</p></div>
+<div><h3>Basic model retouching</h3><p>Natural-looking skin and cleanup for fashion and lifestyle shots.</p></div>
+</div></div></section>
+
+<section id="work"><div class="wrap">
+<h2>Selected work</h2>
+<div class="grid">
+<div class="tile"><b>Ghost mannequin: T-shirt</b><span>Before and after goes here</span></div>
+<div class="tile"><b>Background removal: Sneakers</b><span>Before and after goes here</span></div>
+<div class="tile"><b>Color matching: Bag collection</b><span>Before and after goes here</span></div>
+<div class="tile"><b>Dust removal: Watch</b><span>Before and after goes here</span></div>
+<div class="tile"><b>Liquify: Dress</b><span>Before and after goes here</span></div>
+<div class="tile"><b>Retouching: Model portrait</b><span>Before and after goes here</span></div>
+</div>
+<div class="btns" style="margin-top:34px"><a class="btn p" href="work.html">See all work</a></div></div></section>
+
+<section id="about"><div class="wrap">
+<h2>Experience</h2>
+<div class="cv">
+<div class="row"><small>2025 to now</small><div><h3>Freelance Photo Editor, Upwork (Club97Studio)</h3><p>Product photo editing for fashion, bags, watches and jewelry brands, working remotely from Indonesia. Strong job success score and repeat clients.</p></div></div>
+<div class="row"><small>2020 to 2025</small><div><h3>Senior Photo Editor, PT Pippeline Technologies Indonesia</h3><p>Senior role in the photo editing team.</p></div></div>
+<div class="row"><small>2018 to 2020</small><div><h3>Contract Photo Editor, PT Pippeline Technologies Indonesia</h3><p>Started as a contract photo editor, then moved up to senior.</p></div></div>
+<div class="row"><small>Skills</small><div class="tags"><span>Photoshop</span><span>Background removal</span><span>Ghost mannequin</span><span>Liquify</span><span>Texture preservation</span><span>Color matching</span><span>Dust and scratch removal</span><span>Retouching</span></div></div>
+</div></div></section>
+
+<section id="contact"><div class="wrap">
+<h2>Let’s work together</h2>
+<a class="contact" href="mailto:your@email.com">your@email.com</a>
+<div class="links"><a href="#">Upwork profile</a><a href="https://www.tiktok.com/@_ardianugerah">TikTok</a></div>
+</div></section>
+
+<footer><div>© 2026 Ardi, Club97Studio</div></footer>
+</div>
+<script>
+(function(){var b=document.getElementById('ba'),r=document.getElementById('rng');
+function s(){b.style.setProperty('--p',r.value)}
+r.addEventListener('input',s);s();})();
+</script>
+</body>
+</html>
